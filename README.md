@@ -9,7 +9,7 @@
 
 # Usage:
 
-```css
+```bash
 .status <service-name>
 ```
 
