@@ -9,7 +9,9 @@
 
 # Usage:
 
--   .status <service name>
+```css
+.status <service name >;
+```
 
 # Services (currently supported):
 
