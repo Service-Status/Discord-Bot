@@ -1,6 +1,8 @@
 <div align="center">
     Service Status Discord Bot
-    <iframe src="https://discord.com/widget?id=832359181196984360&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+  <a target="_blank" href="https://discord.premid.app/" title="Join our Discord!">
+<img draggable="false" src="https://discordapp.com/api/guilds/832359181196984363/widget.png?style=banner2" height="76px" draggable="false" alt="Join our Discord!">
+</a>    
 </div>
 # Usage:
 
