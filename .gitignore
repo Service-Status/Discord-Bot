@@ -1,0 +1,6 @@
+.env
+node_modules
+dist
+.vscode/settings.json
+src/langs
+package-lock.json
