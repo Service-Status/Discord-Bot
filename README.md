@@ -10,7 +10,7 @@
 # Usage:
 
 ```css
-.status <service name >;
+.status <service-name>
 ```
 
 # Services (currently supported):
