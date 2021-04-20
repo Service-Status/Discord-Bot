@@ -1,8 +1,10 @@
 <div align="center">
-    # Service Status Discord Bot
+    # Service Status Discord Bot   
+</div>
+<div align="center">
   <a target="_blank" href="https://discord.premid.app/" title="Join our Discord!">
 <img draggable="false" src="https://discordapp.com/api/guilds/832359181196984360/widget.png?style=banner2" height="76px" draggable="false" alt="Join our Discord!">
-</a>    
+</a>
 </div>
 # Usage:
 
