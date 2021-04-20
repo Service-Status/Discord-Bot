@@ -1,5 +1,5 @@
 <div align="center">
-    # Service Status Discord Bot   
+    <b>Service Status Discord Bot</b>
 </div>
 <div align="center">
   <a target="_blank" href="https://discord.premid.app/" title="Join our Discord!">
