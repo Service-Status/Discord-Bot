@@ -1,22 +1,41 @@
+import axios from "axios";
 import { config } from "dotenv";
 import { connect } from "./db";
-import { Client } from "discord.js";
-import * as WOKCommands from "wokcommands";
+import * as Discord from "discord.js";
+import { loadCommands, loadEvents } from "./commandLoader";
+import { error, success } from "./util/debug";
 
 config({ path: "../.env" });
 
-const client = new Client();
-//const WOKCommands = require("wokcommands");
+class Client extends Discord.Client {
+	commands = new Discord.Collection<string, any>();
+	discordCommands = new Discord.Collection<string, any>();
+}
 
-client.once("ready", async () => {
-	console.log("Ready!");
+export let client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
-	new WOKCommands(client, {
-		commandsDir: "./commands",
-		testServers: ["832359181196984360"],
-		showWarns: false,
-	}).setDefaultPrefix(".");
-});
+async function run() {
+	connect()
+		.then(() => {
+			client.login(process.env.TOKEN).then(async () => {
+				(
+					await axios({
+						baseURL: client.options.http.api,
+						url: `/applications/${client.user.id}/guilds/832359181196984360/commands`,
+						headers: { Authorization: `Bot ${client.token}` }
+					})
+				).data.forEach(cmd => client.discordCommands.set(cmd.name, cmd));
 
-client.login(process.env.TOKEN);
-connect();
+				loadEvents("./events", client);
+				loadCommands("./commands", client);
+
+				if (client.user) success(`Connected as ${client.user.tag}`);
+			});
+		})
+		.catch((err: Error) => {
+			error(`Could not connect to database: ${err.name}`);
+			process.exit();
+		});
+}
+
+run();

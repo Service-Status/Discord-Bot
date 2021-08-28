@@ -1,17 +1,14 @@
-import * as mongodb from "mongodb";
+import { Db, MongoClient } from "mongodb";
 
-export let ssDB: mongodb.Db = null;
+export let ssDB: Db = null;
 
-export const connect = () => {
-	mongodb.MongoClient.connect(
-		process.env.MONGO_URL,
-		{ useUnifiedTopology: true, maxIdleTimeMS: 60 * 1000 },
-		(err, client: mongodb.MongoClient) => {
-			if (err) {
-				return;
-			} else {
-				ssDB = client.db("Service-Status");
-			}
-		}
-	);
-};
+export function connect() {
+	return new Promise((resolve, reject) => {
+		MongoClient.connect(process.env.MONGO_URL)
+			.then(mongoClient => {
+				ssDB = mongoClient.db("Service-Status");
+				resolve(mongoClient);
+			})
+			.catch(reject);
+	});
+}
