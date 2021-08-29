@@ -8,10 +8,9 @@
 </div>
 # Usage:
 
-```bash
-.status <service-name>
-```
+/status service: <service-name/alias>
 
+    
 # Services (currently supported):
 
 -   Digital Ocean
